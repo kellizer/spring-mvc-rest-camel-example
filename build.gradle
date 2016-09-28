@@ -1,0 +1,39 @@
+group 'blog'
+version '1.0-SNAPSHOT'
+buildscript {
+    ext {
+        springBootVersion = '1.4.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/libs-release" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+ext {
+    camelVersion = '2.16.2'
+}
+
+
+apply plugin: "java"
+apply plugin: "spring-boot"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //spring
+    compile "org.springframework.boot:spring-boot-starter-web"
+    //camel
+    compile "org.apache.camel:camel-core:$camelVersion"
+    compile "org.apache.camel:camel-spring-boot:$camelVersion"
+    //test - spring
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+
+
+}
